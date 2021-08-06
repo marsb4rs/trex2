@@ -106,7 +106,20 @@ function draw(){
 
   //stop trex from falling down
   trex.collide(invisibleGround)
+  if (mousePressedOver(restart)){
+    reset();
+  }
   drawSprites();
+
+}
+function reset(){
+  gameState=play;
+  gameOver.visible=false
+  restart.visible=false
+  obstacleGroup.destroyEach();
+  cloudGroup.destroyEach();
+  score=0
+  trex.changeAnimation("running",trex_running)
 }
 function spawnClouds(){
   if (frameCount%60===0){
